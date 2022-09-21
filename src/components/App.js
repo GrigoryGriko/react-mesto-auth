@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Routes, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
@@ -115,7 +115,7 @@ function App() {
       <div className="App">
         <div className="page">
             <Header />
-            <Routes>
+            <Switch>
               <ProtectedRoute
                 exact
                 path="/"
@@ -144,7 +144,7 @@ function App() {
               <Route>
                 {loggedIn ? <Redirect to="/" /> : <Redirect to="sign-up" />}
               </Route>
-            </Routes>
+            </Switch>
 
             <EditProfilePopup 
               isOpen={isEditProfilePopupOpen} 
