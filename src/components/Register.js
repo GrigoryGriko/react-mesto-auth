@@ -8,14 +8,14 @@ function Register() {
         <h2 className="sign-form__header">Регистрация</h2>
 
         <input
-          className="sign-form__input"
+          className="sign-form__input-email general-input-sign-form"
           placeholder="Email"
         >
 
         </input>
 
         <input
-          className="sign-form__input"
+          className="sign-form__input-password general-input-sign-form"
           placeholder="Пароль"
         >
 
