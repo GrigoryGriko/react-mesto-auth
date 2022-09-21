@@ -3,29 +3,29 @@ import React from 'react';
 
 function Register() {
   return (
-    <div>
-      <form>
-        <div>
-          <h2>Регистрация</h2>
+    <main className="sign-form">
+      <form className="sign-form__form">
+        <h2 className="sign-form__header">Регистрация</h2>
 
-          <input
-            placeholder="Email"
-          >
+        <input
+          className="sign-form__input"
+          placeholder="Email"
+        >
 
-          </input>
+        </input>
 
-          <input
-            placeholder="Пароль"
-          >
+        <input
+          className="sign-form__input"
+          placeholder="Пароль"
+        >
 
-          </input>
+        </input>
 
-          <button>Зарегистрироваться</button>
+        <button className="sign-form__button-submit">Зарегистрироваться</button>
 
-          <a href="/sign-in">Уже зарегистрированы? Войти</a>
-        </div>
+        <a href="/sign-in" className="sign-form__link">Уже зарегистрированы? Войти</a>
       </form>
-    </div>
+    </main>
   )
 }
 

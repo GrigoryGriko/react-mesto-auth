@@ -135,10 +135,10 @@ function App() {
                 <ImagePopup card={selectedCard} onClose={closeAllPopups} />
               </ProtectedRoute>
               <Route path='/sign-up'>
-                <Login />
+                <Register />
               </Route>
               <Route path='/sign-in'>
-                <Register />
+                <Login />
               </Route>
 
               <Route>

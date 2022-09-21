@@ -65,3 +65,38 @@
 @import url(./blocks/form/__input/_type/form__input_type_error.css);
 @import url(./blocks/popup/__input-error/_extender/popup__input-error_extender_form.css);
 
+
+.sign-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 60px;
+}
+.sign-form__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 358px;
+}
+
+.sign-form__header {
+    margin: 0;
+
+    text-align: center;
+    width: 100%;
+    font-family: 'Inter';
+    font-weight: 900;
+    font-size: 24px;
+    color: #fff;
+}
+.sign-form__input {
+    
+}
+.sign-form__button-submit {
+    
+}
+.sign-form__link {
+    
+}
