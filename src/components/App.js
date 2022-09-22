@@ -14,6 +14,7 @@ import AddPlacePopup from './AddPlacePopup.js';
 import ImagePopup from './ImagePopup.js';
 import api from '../utils/Api.js';
 import ProtectedRoute from './ProtectedRoute.js';
+import InfoTooltip from './InfoTooltip.js';
 
 
 function App() {
@@ -135,6 +136,7 @@ function App() {
                 <ImagePopup card={selectedCard} onClose={closeAllPopups} />
               </ProtectedRoute>
               <Route path='/sign-up'>
+                <InfoTooltip />
                 <Register />
               </Route>
               <Route path='/sign-in'>

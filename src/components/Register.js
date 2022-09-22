@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function Register() {
   return (
     <main className="sign-form">
@@ -17,6 +16,7 @@ function Register() {
         <input
           className="sign-form__input-password general-input-sign-form"
           placeholder="Пароль"
+          type="password"
         >
 
         </input>
