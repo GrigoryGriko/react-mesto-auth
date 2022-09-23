@@ -1,12 +1,15 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+
+import * as auth from '../auth.js';
 
 class Register extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: '',
-      password: ''
+      password: '',
+      email: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +24,20 @@ class Register extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    //обработка логики регистрации
+    const { password, email } = this.state;
+    auth.register(password, email).then((res) => {
+      if (res) {
+        this.setState({
+          message: ''
+        }, () => {
+          this.props.history.push('/sign-in');
+        })
+      } else {
+        this.setState({
+          message: 'Что-то пошло не так!'
+        })
+      }
+    });
   }
 
   render() {
@@ -57,11 +73,11 @@ class Register extends React.Component {
 
           <button className="sign-form__button-submit">Зарегистрироваться</button>
 
-          <a href="/sign-in" className="sign-form__link">Уже зарегистрированы? Войти</a>
+          <Link to="/sign-in" className="sign-form__link">Уже зарегистрированы? Войти</Link>
         </form>
       </main>
     )
   }
 }
 
-export default Register;
+export default withRouter(Register);
