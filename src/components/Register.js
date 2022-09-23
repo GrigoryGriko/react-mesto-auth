@@ -50,7 +50,7 @@ class Register extends React.Component {
           <h2 className="auth__header">Регистрация</h2>
 
           <input
-            id="email"
+            name="email"
             className="auth__input-email general-input-auth"
             placeholder="Email"
             type="text"
@@ -61,7 +61,7 @@ class Register extends React.Component {
           </input>
 
           <input
-            id="password"
+            name="password"
             className="auth__input-password general-input-auth"
             placeholder="Пароль"
             type="password"

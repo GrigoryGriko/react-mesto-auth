@@ -8,6 +8,7 @@ function Login() {
         <h2 className="auth__header">Вход</h2>
 
         <input
+          name="email"
           className="auth__input-email general-input-auth"
           placeholder="Email"
         >
@@ -15,6 +16,7 @@ function Login() {
         </input>
 
         <input
+          name="password"
           className="auth__input-password general-input-auth"
           placeholder="Пароль"
           type="password"
