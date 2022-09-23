@@ -27,6 +27,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   
+  const [loggedIn, setLoggedIn] = useState(false);
 
   React.useEffect(() => {
     Promise.all([api.getInitCards(), api.getInitUserData()])
@@ -40,10 +41,14 @@ function App() {
     });
   }, [])
 
+  function handleLogin(e) {
+    e.preventDefault();
+    setLoggedIn(true);
+  }
+
   function handleCardClick(card) {
     setSelectedCard(card);
   }
-
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -109,8 +114,6 @@ function App() {
     setSelectedCard({});
   }
 
-  let loggedIn = false;
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -140,7 +143,7 @@ function App() {
                 <Register />
               </Route>
               <Route path='/sign-in'>
-                <Login />
+                <Login handleLogin={handleLogin} />
               </Route>
 
               <Route>
