@@ -4,7 +4,7 @@ import * as auth from '../auth.js';
 
 
 
-class Login extends React.Componet {
+class Login extends React.Component {
   constructor(props) {
     super(props);
 
