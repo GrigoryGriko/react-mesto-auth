@@ -42,16 +42,16 @@ class Register extends React.Component {
 
   render() {
     return (
-      <main className="sign-form">
+      <main className="auth">
         <form
-          className="sign-form__form"
+          className="auth__form"
           onSubmit={this.handleSubmit}
         >
-          <h2 className="sign-form__header">Регистрация</h2>
+          <h2 className="auth__header">Регистрация</h2>
 
           <input
             id="email"
-            className="sign-form__input-email general-input-sign-form"
+            className="auth__input-email general-input-auth"
             placeholder="Email"
             type="text"
             value={this.state.email}
@@ -62,7 +62,7 @@ class Register extends React.Component {
 
           <input
             id="password"
-            className="sign-form__input-password general-input-sign-form"
+            className="auth__input-password general-input-auth"
             placeholder="Пароль"
             type="password"
             value={this.state.password}
@@ -71,9 +71,9 @@ class Register extends React.Component {
 
           </input>
 
-          <button className="sign-form__button-submit">Зарегистрироваться</button>
+          <button className="auth__button-submit">Зарегистрироваться</button>
 
-          <Link to="/sign-in" className="sign-form__link">Уже зарегистрированы? Войти</Link>
+          <Link to="/sign-in" className="auth__link">Уже зарегистрированы? Войти</Link>
         </form>
       </main>
     )

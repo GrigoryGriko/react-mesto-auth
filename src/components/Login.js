@@ -3,26 +3,26 @@ import React from 'react';
 
 function Login() {
   return (
-    <main className="sign-form">
-      <form className="sign-form__form">
-        <h2 className="sign-form__header">Вход</h2>
+    <main className="auth">
+      <form className="auth__form">
+        <h2 className="auth__header">Вход</h2>
 
         <input
-          className="sign-form__input-email general-input-sign-form"
+          className="auth__input-email general-input-auth"
           placeholder="Email"
         >
 
         </input>
 
         <input
-          className="sign-form__input-password general-input-sign-form"
+          className="auth__input-password general-input-auth"
           placeholder="Пароль"
           type="password"
         >
 
         </input>
 
-        <button className="sign-form__button-submit">Войти</button>
+        <button className="auth__button-submit">Войти</button>
       </form>
     </main>
   )
