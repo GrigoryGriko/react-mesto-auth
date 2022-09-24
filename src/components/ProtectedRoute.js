@@ -2,14 +2,12 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 
-const ProtectedRoute = ({ componet: Component, ...props }) => {
+const ProtectedRoute = ({ component: Component, ...props }) => {
+  console.log(props.loggedIn);
   return (
     <Route>
-      {() => {
-        console.log(<Component />);
-        props.loggedIn ? <Component {...props} /> : <Redirect to="./sign-up" />
-        }
-      }
+      {props.loggedIn ? <Component {...props} /> : <Redirect to="./sign-up" />}
+      
     </Route>
   );
 };

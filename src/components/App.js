@@ -43,7 +43,7 @@ function App() {
 
   function handleLogin(e) {
     e.preventDefault();
-    //setLoggedIn(true);
+    setLoggedIn(true);
   }
 
   function handleCardClick(card) {
