@@ -21,11 +21,15 @@ class Login extends React.Component {
     this.setState({
       [name]: value
     });
+    console.log(this.state.email);
+    console.log(this.state.password);
+    
   }
 
   handleSubmit(e) {
     e.preventDefault();
     if (!this.state.password || !this.state.username) {
+      console.log(12);
       return;
     }
     auth.authorize(this.state.password, this.state.username)
@@ -43,13 +47,18 @@ class Login extends React.Component {
   render() {
     return (
       <main className="auth">
-        <form className="auth__form">
+        <form 
+          className="auth__form"
+          onSubmit={this.handleSubmit}
+        >
           <h2 className="auth__header">Вход</h2>
 
           <input
             name="email"
             className="auth__input-email general-input-auth"
             placeholder="Email"
+            value={this.state.email}
+            onChange={this.handleChange}
           >
 
           </input>
@@ -59,6 +68,8 @@ class Login extends React.Component {
             className="auth__input-password general-input-auth"
             placeholder="Пароль"
             type="password"
+            value={this.state.password}
+            onChange={this.handleChange}
           >
 
           </input>

@@ -44,6 +44,7 @@ function App() {
   function handleLogin(e) {
     e.preventDefault();
     setLoggedIn(true);
+    console.log(loggedIn);
   }
 
   function handleCardClick(card) {
