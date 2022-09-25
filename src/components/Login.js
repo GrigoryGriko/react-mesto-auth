@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { withRouter } from 'react-router-dom';
 import * as auth from '../auth.js';
 
 
@@ -77,4 +77,4 @@ class Login extends React.Component {
     )
   }
 }
-export default Login;
+export default withRouter(Login);
