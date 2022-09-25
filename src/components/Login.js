@@ -21,20 +21,17 @@ class Login extends React.Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state.email);
-    console.log(this.state.password);
     
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    if (!this.state.password || !this.state.username) {
-      console.log(12);
+    if (!this.state.password || !this.state.email) {
       return;
     }
-    auth.authorize(this.state.password, this.state.username)
+    auth.authorize(this.state.password, this.state.email)
     .then((data) => {
-      if (data.jwt) {
+      if (data.token) {
         this.setState({email: '', password: ''}, () => {
           this.props.handleLogin();
           this.props.history.push('/');

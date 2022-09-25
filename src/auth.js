@@ -19,7 +19,7 @@ export const register = (password, email) => {
 };
 
 export const authorize = (password, email) => {
-  return fetch(`${BASE_URL}/auth/local`, {
+  return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -29,10 +29,10 @@ export const authorize = (password, email) => {
   })
   .then((response => response.json()))
   .then((data) => {
-    if (data.jwt) {
-      localStorage.setItem('jwt', data.jwt);
+    if (data.token) {
+      localStorage.setItem('jwt', data.token);
       return data;
-    }
+    } 
   })
   .catch(err => console.log(err))
 };

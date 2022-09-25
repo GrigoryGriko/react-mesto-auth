@@ -41,10 +41,8 @@ function App() {
     });
   }, [])
 
-  function handleLogin(e) {
-    e.preventDefault();
+  function handleLogin() {
     setLoggedIn(true);
-    console.log(loggedIn);
   }
 
   function handleCardClick(card) {
