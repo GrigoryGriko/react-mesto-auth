@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
@@ -57,7 +57,7 @@ function App() {
       if (jwt) {
         auth.getContent(jwt).then((res) => {
           if (res) {
-            handleLogin();
+            setLoggedIn(true);
             setUserData({_id: res._id, email: res.email});
 
             React.useEffect(() => {
@@ -147,13 +147,14 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <div className="page">
-            <Header />
+            <Header props={userData} />
             <Switch>
               <ProtectedRoute
                 exact
                 path="/"
                 component={Main}
                 loggedIn={loggedIn}
+                userData={userData}
 
                 onEditProfile={handleEditProfileClick} 
                 onAddPlace={handleAddPlaceClick} 
@@ -204,4 +205,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
