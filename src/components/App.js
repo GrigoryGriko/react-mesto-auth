@@ -15,6 +15,7 @@ import ImagePopup from './ImagePopup.js';
 import api from '../utils/Api.js';
 import ProtectedRoute from './ProtectedRoute.js';
 import InfoTooltip from './InfoTooltip.js';
+import * as auth from '../auth.js';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
   const [cards, setCards] = useState([]);
   
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({_id: '', email: ''})
 
   React.useEffect(() => {
     Promise.all([api.getInitCards(), api.getInitUserData()])
@@ -40,6 +42,34 @@ function App() {
       console.log(`Ошибка загрузки данных пользователя ${err}`);
     });
   }, [])
+
+  React.useEffect(() => {
+    tokenCheck();
+  }, [])
+
+
+
+
+  function tokenCheck() {
+    if (localStorage.getItem('jwt')) {
+      const jwt = localStorage.getItem('jwt');
+
+      if (jwt) {
+        auth.getContent(jwt).then((res) => {
+          if (res) {
+            handleLogin();
+            setUserData({_id: res._id, email: res.email});
+
+            React.useEffect(() => {
+              if (loggedIn) {
+                history.push('/');
+               }
+             }, [loggedIn]);
+          }
+        })
+      }
+    }
+  }
 
   function handleLogin() {
     setLoggedIn(true);
