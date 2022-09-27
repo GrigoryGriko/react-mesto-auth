@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Switch, Route } from 'react-router-dom';
 
 function Header(props) {
   const history = useHistory();
@@ -9,36 +9,40 @@ function Header(props) {
     localStorage.removeItem('jwt');
     history.push('/sign-in');
   }
-  
-  let children;
-  React.useEffect(() => {
-    
-
-    if (props.loggedIn) {
-      children = (
-        <>
-          <p className="header__email">{props.userData.email}</p>
-          <button onClick={signOut} to="/sign-in" className="header__action-auth">Выйти</button>
-        </>
-      );
-    } else {
-      children = (
-        <>
-          <Link to="/sign-up" className="header__action-auth">Регистрация</Link>
-        </>
-      )
-    }
-  }, [props.loggedIn]);
-
 
   return (
-    <header className="header section">
-      <a className="logo" href="#"></a>
+    <Switch>
+      <Route path='/'>
+        <header className="header section">
+          <a className="logo" href="#"></a>
 
-      <div className="header__wrapper-auth">
-        `${children}`
-      </div>
-    </header>
+          <div className="header__wrapper-auth">
+            <p className="header__email">{props.userData.email}</p>
+            <button onClick={signOut} to="/sign-in" className="header__action-auth">Выйти</button>
+          </div>
+        </header>
+      </Route>
+
+      <Route path='/sign-up'>
+        <header className="header section">
+          <a className="logo" href="#"></a>
+
+          <div className="header__wrapper-auth">
+            <Link to="/sign-ip" className="header__action-auth">Вход</Link>
+          </div>
+        </header>
+      </Route>
+
+      <Route path='/sign-in'>
+        <header className="header section">
+          <a className="logo" href="#"></a>
+
+          <div className="header__wrapper-auth">
+            <Link to="/sign-up" className="header__action-auth">Регистрация</Link>
+          </div>
+        </header>
+      </Route>
+    </Switch>
   )
 }
 
