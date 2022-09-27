@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+import { Route, Switch, Redirect, withRouter, useHistory } from "react-router-dom";
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
@@ -29,7 +29,9 @@ function App() {
   const [cards, setCards] = useState([]);
   
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({_id: '', email: ''})
+  const [userData, setUserData] = useState({_id: '', email: ''});
+
+  const history = useHistory();
 
   React.useEffect(() => {
     Promise.all([api.getInitCards(), api.getInitUserData()])
@@ -45,31 +47,33 @@ function App() {
 
   React.useEffect(() => {
     tokenCheck();
-  }, [])
 
-
-
-
-  function tokenCheck() {
-    if (localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt');
-
-      if (jwt) {
-        auth.getContent(jwt).then((res) => {
-          if (res) {
-            setLoggedIn(true);
-            setUserData({_id: res._id, email: res.email});
-
-            React.useEffect(() => {
-              if (loggedIn) {
-                history.push('/');
-               }
-             }, [loggedIn]);
-          }
-        })
+    function tokenCheck() {
+      if (localStorage.getItem('jwt')) {
+        const jwt = localStorage.getItem('jwt');
+  
+        if (jwt) {
+          auth.getContent(jwt).then((res) => {
+            if (res) {
+              setLoggedIn(true);
+              setUserData({_id: res._id, email: res.email});
+            }
+          })
+        }
       }
     }
-  }
+  }, [])
+  
+  React.useEffect(() => {
+    
+    if (loggedIn) {
+      history.push('/');
+    }
+  }, [loggedIn]);
+
+
+
+  
 
   function handleLogin() {
     setLoggedIn(true);
