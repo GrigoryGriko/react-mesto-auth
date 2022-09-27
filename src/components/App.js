@@ -72,9 +72,6 @@ function App() {
   }, [loggedIn]);
 
 
-
-  
-
   function handleLogin() {
     setLoggedIn(true);
   }
@@ -151,7 +148,10 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <div className="page">
-            <Header userData={userData} />
+            <Header 
+              loggedIn={loggedIn} 
+              userData={userData} 
+            />
             <Switch>
               <ProtectedRoute
                 exact

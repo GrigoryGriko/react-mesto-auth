@@ -153,6 +153,7 @@
 }
 .header__email {
     margin: 0;
+    align-self: center;
 
     margin-right: 24px;
     font-size: 18px;
@@ -160,11 +161,14 @@
     color: #fff;
     justify-self: end;
 }
-.header__logout {
+.header__action-auth {
     margin: 0;
-    
+
     font-size: 18px;
     font-weight: 400;
     color: #A9A9A9;
     cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    background: transparent;
 }
