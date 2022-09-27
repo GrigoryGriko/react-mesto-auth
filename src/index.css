@@ -131,7 +131,13 @@
 
     cursor: pointer;
     outline: none;
+
+    transition: .3s ease opacity;
 }
+.auth__button-submit:hover {
+    opacity: .85;
+}
+
 .auth__link {
     margin-top: 15px;
 
@@ -140,4 +146,20 @@
     font-size: 14px;
     font-weight: 400;
     color: #fff;
+}
+
+
+.header__email {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+}
+.header__logout {
+    position: absolute;
+    right: 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: #A9A9A9;
+    text-decoration: none;
 }
