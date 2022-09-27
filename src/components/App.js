@@ -62,7 +62,7 @@ function App() {
         }
       }
     }
-  }, [])
+  }, [loggedIn])
   
   React.useEffect(() => {
     
