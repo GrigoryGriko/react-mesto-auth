@@ -167,9 +167,6 @@ function App() {
                 onCardDelete={handelCardDelete}
                 cards={cards}
               >
-                
-
-                <ImagePopup card={selectedCard} onClose={closeAllPopups} />
               </ProtectedRoute>
               <Route path='/sign-up'>
                 <InfoTooltip />
@@ -183,6 +180,11 @@ function App() {
                 {loggedIn ? <Redirect to="/" /> : <Redirect to="sign-up" />}
               </Route>
             </Switch>
+
+            <ImagePopup 
+              card={selectedCard} 
+              onClose={closeAllPopups} 
+            />
 
             <EditProfilePopup 
               isOpen={isEditProfilePopupOpen} 
