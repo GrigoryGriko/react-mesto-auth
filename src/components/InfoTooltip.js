@@ -2,14 +2,14 @@ import React from 'react';
 
 
 function InfoTooltip(props) {
-  //popup_opened
   return (
-    <div className="popup popup_info-tootip">
+    <div className={`popup popup_info-tootip ${props.isOpen ? 'popup_opened' : ''}`}>
       <form className="popup__container">
         <button className="popup__button-close" type="button" onClick={props.onClose}></button>
 
         <div className="popup__content">
-          <h2 className="popup__header">Информация</h2>
+          <p>{`${(props.statusAuth === 'success') ? 'Успешно' : 'Ошибка'}`}</p>
+          <h2 className="popup__header">{props.message}</h2>
         </div>
           
       </form>

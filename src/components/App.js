@@ -169,7 +169,7 @@ function App() {
               >
               </ProtectedRoute>
               <Route path='/sign-up'>
-                <InfoTooltip />
+                
                 <Register />
               </Route>
               <Route path='/sign-in'>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import * as auth from '../auth.js';
+import InfoTooltip from './InfoTooltip.js';
 
 class Register extends React.Component {
   constructor(props) {
@@ -28,54 +29,66 @@ class Register extends React.Component {
     auth.register(password, email).then((res) => {
       if (res) {
         this.setState({
-          message: ''
-        }, () => {
-          this.props.history.push('/sign-in');
+          message: 'Вы успешно зарегистрировались!',
+          statusAuth: 'success',
+          isOpen: true
         })
       } else {
         this.setState({
-          message: 'Что-то пошло не так!'
+          message: 'Что-то пошло не так! Попробуйте ещё раз.',
+          statusAuth: 'error',
+          isOpen: true
         })
       }
     });
   }
 
   render() {
+    
+console.log(this.isOpen);
     return (
-      <main className="auth">
-        <form
-          className="auth__form"
-          onSubmit={this.handleSubmit}
-        >
-          <h2 className="auth__header">Регистрация</h2>
+      <>
+        <InfoTooltip 
+          isOpen={this.isOpen} 
+          message={this.message} 
+          statusAuth={this.statusAuth}
+        />
 
-          <input
-            name="email"
-            className="auth__input-email general-input-auth"
-            placeholder="Email"
-            type="text"
-            value={this.state.email}
-            onChange={this.handleChange}
+        <main className="auth">
+          <form
+            className="auth__form"
+            onSubmit={this.handleSubmit}
           >
+            <h2 className="auth__header">Регистрация</h2>
 
-          </input>
+            <input
+              name="email"
+              className="auth__input-email general-input-auth"
+              placeholder="Email"
+              type="text"
+              value={this.state.email}
+              onChange={this.handleChange}
+            >
 
-          <input
-            name="password"
-            className="auth__input-password general-input-auth"
-            placeholder="Пароль"
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          >
+            </input>
 
-          </input>
+            <input
+              name="password"
+              className="auth__input-password general-input-auth"
+              placeholder="Пароль"
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            >
 
-          <button className="auth__button-submit">Зарегистрироваться</button>
+            </input>
 
-          <Link to="/sign-in" className="auth__link">Уже зарегистрированы? Войти</Link>
-        </form>
-      </main>
+            <button className="auth__button-submit">Зарегистрироваться</button>
+
+            <Link to="/sign-in" className="auth__link">Уже зарегистрированы? Войти</Link>
+          </form>
+        </main>
+      </>
     )
   }
 }
