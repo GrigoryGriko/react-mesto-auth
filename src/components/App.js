@@ -56,7 +56,7 @@ function App() {
           auth.getContent(jwt).then((res) => {
             if (res) {
               setLoggedIn(true);
-              setUserData({_id: res._id, email: res.email});
+              setUserData({_id: res.data._id, email: res.data.email});
             }
           })
         }
@@ -146,19 +146,18 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setSelectedCard({});
   }
-
+  
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <div className="page">
-            <Header props={userData} />
+            <Header userData={userData} />
             <Switch>
               <ProtectedRoute
                 exact
                 path="/"
                 component={Main}
                 loggedIn={loggedIn}
-                userData={userData}
 
                 onEditProfile={handleEditProfileClick} 
                 onAddPlace={handleAddPlaceClick} 
