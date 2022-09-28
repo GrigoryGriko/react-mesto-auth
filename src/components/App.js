@@ -30,8 +30,10 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState({_id: '', email: ''});
 
-  const history = useHistory();
+  const [dataInfoTooltip, setInfoTooltip] = useState({messageAuth: null, statusAuth: null});
 
+  const history = useHistory();
+  
   React.useEffect(() => {
     Promise.all([api.getInitCards(), api.getInitUserData()])
     .then(([cards, user]) => {
@@ -145,9 +147,7 @@ function App() {
     setIsEditProfilePopupOpen(false); 
     setIsAddPlacePopupOpen(false);
 
-    this.setState({
-      message: ''
-    })
+    setInfoTooltip({messageAuth: null, statusAuth: null});
 
     setSelectedCard({});
   }
@@ -178,8 +178,10 @@ function App() {
               </ProtectedRoute>
               <Route path='/sign-up'>
                 
-                <Register 
-                  closeAllPopups={closeAllPopups}
+                <Register
+                  onSuccess
+                  onError
+                  onClose={closeAllPopups}
                 />
               </Route>
               <Route path='/sign-in'>
@@ -190,6 +192,11 @@ function App() {
                 {loggedIn ? <Redirect to="/" /> : <Redirect to="sign-up" />}
               </Route>
             </Switch>
+
+            <InfoTooltip
+              message={dataInfoTooltip.messageAuth} 
+              statusAuth={dataInfoTooltip.statusAuth}
+            />
 
             <ImagePopup 
               card={selectedCard} 

@@ -33,8 +33,6 @@ class Register extends React.Component {
           message: 'Вы успешно зарегистрировались!',
           statusAuth: 'success'
         })
-        
-        this.props.isOpen = true;
       } else {
         this.setState({
           message: 'Что-то пошло не так! Попробуйте ещё раз.',
@@ -47,11 +45,6 @@ class Register extends React.Component {
   render() {
     return (
       <>
-        <InfoTooltip 
-          message={this.state.message} 
-          statusAuth={this.state.statusAuth}
-        />
-
         <main className="auth">
           <form
             className="auth__form"
