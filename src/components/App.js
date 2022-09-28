@@ -14,7 +14,6 @@ import AddPlacePopup from './AddPlacePopup.js';
 import ImagePopup from './ImagePopup.js';
 import api from '../utils/Api.js';
 import ProtectedRoute from './ProtectedRoute.js';
-import InfoTooltip from './InfoTooltip.js';
 import * as auth from '../auth.js';
 
 
@@ -92,6 +91,10 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(true);
+  }
+
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
   
@@ -141,6 +144,11 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false); 
     setIsAddPlacePopupOpen(false);
+
+    this.setState({
+      message: ''
+    })
+
     setSelectedCard({});
   }
   
@@ -170,7 +178,9 @@ function App() {
               </ProtectedRoute>
               <Route path='/sign-up'>
                 
-                <Register />
+                <Register 
+                  closeAllPopups={closeAllPopups}
+                />
               </Route>
               <Route path='/sign-in'>
                 <Login handleLogin={handleLogin} />

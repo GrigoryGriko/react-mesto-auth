@@ -10,7 +10,8 @@ class Register extends React.Component {
 
     this.state = {
       password: '',
-      email: ''
+      email: '',
+      message: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,28 +31,25 @@ class Register extends React.Component {
       if (res) {
         this.setState({
           message: 'Вы успешно зарегистрировались!',
-          statusAuth: 'success',
-          isOpen: true
+          statusAuth: 'success'
         })
+        
+        this.props.isOpen = true;
       } else {
         this.setState({
           message: 'Что-то пошло не так! Попробуйте ещё раз.',
-          statusAuth: 'error',
-          isOpen: true
+          statusAuth: 'error'
         })
       }
     });
   }
 
   render() {
-    
-console.log(this.isOpen);
     return (
       <>
         <InfoTooltip 
-          isOpen={this.isOpen} 
-          message={this.message} 
-          statusAuth={this.statusAuth}
+          message={this.state.message} 
+          statusAuth={this.state.statusAuth}
         />
 
         <main className="auth">
