@@ -184,7 +184,10 @@ function App() {
                 />
               </Route>
               <Route path='/sign-in'>
-                <Login handleLogin={handleLogin} />
+                <Login 
+                  handleLogin={handleLogin}
+                  onFinal={setInfoTooltipState}
+                />
               </Route>
 
               <Route>

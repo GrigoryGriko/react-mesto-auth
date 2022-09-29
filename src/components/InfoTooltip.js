@@ -5,7 +5,13 @@ function InfoTooltip(props) {
         <button className="popup__button-close" type="button" onClick={props.onClose}></button>
 
         <div className="popup__content">
-          <p>{`${(props.isError === false) ? 'Успешно' : 'Ошибка'}`}</p>
+          <div 
+            className="popup__status-image" 
+            /*style={{ 
+              backgroundImage: `url(${(props.isError === false) ? '../images/success.svg' : '../images/error.svg'})` 
+            }}*/
+          ></div>
+
           <h2 className="popup__header">{props.message}</h2>
         </div>
           

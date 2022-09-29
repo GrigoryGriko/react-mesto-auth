@@ -38,7 +38,9 @@ class Login extends React.Component {
         })
       }
     })
-    .catch(err => console.log(err));
+    .catch(() => {
+      this.props.onFinal({ message: 'Что-то пошло не так! Попробуйте ещё раз.', isError: true });
+    });
   }
 
   render() {

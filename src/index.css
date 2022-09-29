@@ -172,3 +172,13 @@
     outline: none;
     background: transparent;
 }
+
+.popup__status-image {
+    width: 120px;
+    height: 120px;
+    background-color: transparent;
+    background-image: url(./images/success.svg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+}
