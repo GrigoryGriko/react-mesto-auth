@@ -148,6 +148,12 @@
     color: #fff;
 }
 
+.header__container-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .header__wrapper-auth {
     display: flex;
 }
