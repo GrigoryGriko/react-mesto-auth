@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import * as auth from '../auth.js';
-import InfoTooltip from './InfoTooltip.js';
 
 class Register extends React.Component {
   constructor(props) {
@@ -27,10 +26,10 @@ class Register extends React.Component {
     e.preventDefault()
     const { password, email } = this.state;
     auth.register(password, email).then((res) => {
-      if (res) {
-          this.props.onFinal({ message: 'Вы успешно зарегистрировались!', isError: false });
+      if (!res || res.error) {
+        this.props.onFinal({ message: 'Что-то пошло не так! Попробуйте ещё раз.', isError: true });  
       } else {
-          this.props.onFinal({ message: 'Что-то пошло не так! Попробуйте ещё раз.', isError: true });
+        this.props.onFinal({ message: 'Вы успешно зарегистрировались!', isError: false });
       }
     });
   }

@@ -148,7 +148,7 @@ function App() {
     setIsEditProfilePopupOpen(false); 
     setIsAddPlacePopupOpen(false);
 
-    setInfoTooltip({messageAuth: null, statusAuth: null});
+    setInfoTooltipState({ message: '', isError: false });
 
     setSelectedCard({});
   }
