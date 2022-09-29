@@ -1,6 +1,3 @@
-import React, { useState } from 'react';
-
-
 function InfoTooltip(props) {
   return (
     <div className={`popup popup_info-tootip ${(props.message !== '') ? 'popup_opened' : ''}`}>
@@ -8,7 +5,7 @@ function InfoTooltip(props) {
         <button className="popup__button-close" type="button" onClick={props.onClose}></button>
 
         <div className="popup__content">
-          <p>{`${(props.statusAuth === 'success') ? 'Успешно' : 'Ошибка'}`}</p>
+          <p>{`${(props.isError === false) ? 'Успешно' : 'Ошибка'}`}</p>
           <h2 className="popup__header">{props.message}</h2>
         </div>
           

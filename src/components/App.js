@@ -12,6 +12,7 @@ import EditProfilePopup from './EditProfilePopup.js';
 import EditAvatarPopup from './EditAvatarPopup.js';
 import AddPlacePopup from './AddPlacePopup.js';
 import ImagePopup from './ImagePopup.js';
+import InfoTooltip from './InfoTooltip.js';
 import api from '../utils/Api.js';
 import ProtectedRoute from './ProtectedRoute.js';
 import * as auth from '../auth.js';
@@ -30,7 +31,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState({_id: '', email: ''});
 
-  const [dataInfoTooltip, setInfoTooltip] = useState({messageAuth: null, statusAuth: null});
+  const [infoTooltipState, setInfoTooltipState] = useState({ message: '', isError: false });
 
   const history = useHistory();
   
@@ -179,9 +180,7 @@ function App() {
               <Route path='/sign-up'>
                 
                 <Register
-                  onSuccess
-                  onError
-                  onClose={closeAllPopups}
+                  onFinal={setInfoTooltipState}
                 />
               </Route>
               <Route path='/sign-in'>
@@ -194,8 +193,9 @@ function App() {
             </Switch>
 
             <InfoTooltip
-              message={dataInfoTooltip.messageAuth} 
-              statusAuth={dataInfoTooltip.statusAuth}
+              message={infoTooltipState.message} 
+              isError={infoTooltipState.isError}
+              onClose={closeAllPopups}
             />
 
             <ImagePopup 
