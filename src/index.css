@@ -73,7 +73,7 @@
 @import url(./blocks/profile/__info/profile__info.css);
 @import url(./blocks/profile/__wrapper/profile__wrapper.css);
 
-@import url(./auth.js);
+@import url(./blocks/auth/auth.css);
 
 @import url(./blocks/popup/__button-save/_disabled/popup__button_disabled.css);
 
