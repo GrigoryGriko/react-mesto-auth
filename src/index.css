@@ -183,10 +183,17 @@
     width: 120px;
     height: 120px;
     background-color: transparent;
-    background-image: url(./images/success.svg);
+    
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
+}
+.popup_type_error {
+    background-image: url(./images/error.svg);
+}
+
+.popup_type_success {
+    background-image: url(./images/success.svg); 
 }
 
 .popup__content_properties_alert {

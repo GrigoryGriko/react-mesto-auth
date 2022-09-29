@@ -30,9 +30,9 @@ class Register extends React.Component {
       if (res.data) {
         this.props.onFinal({ message: 'Вы успешно зарегистрировались!', isError: false });
       }
-    })
-    .catch(() => {
-      this.props.onFinal({ message: 'Что-то пошло не так! Попробуйте ещё раз.', isError: true })
+      else {
+        this.props.onFinal({ message: 'Что-то пошло не так! Попробуйте ещё раз.', isError: true })
+      }
     });
   }
 
