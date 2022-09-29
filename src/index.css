@@ -173,7 +173,13 @@
     background: transparent;
 }
 
+
+.popup__container_properties_alert {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
 .popup__status-image {
+    margin-bottom: 32px;
     width: 120px;
     height: 120px;
     background-color: transparent;
@@ -181,4 +187,15 @@
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
+}
+
+.popup__content_properties_alert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.popup__header_properties_alert {
+    text-align: center;
+    max-width: 358px;
+    line-height: 29px;
 }
