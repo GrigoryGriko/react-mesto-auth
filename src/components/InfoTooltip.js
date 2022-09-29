@@ -1,5 +1,5 @@
 function InfoTooltip(props) {
-  const popupClass = (props.isError === false) ? 'popup_type_success' : 'popup_type_error';
+  const popupClass = (props.isError === false) ? 'popup__content_type_success' : 'popup__content_type_error';
   return (
     <div className={`popup popup_info-tootip ${(props.message !== '') ? 'popup_opened' : ''}`}>
       <form className="popup__container popup__container_properties_alert ">
