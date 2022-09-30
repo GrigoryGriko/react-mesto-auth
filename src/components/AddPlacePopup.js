@@ -24,6 +24,11 @@ function AddPlacePopup(props) {
     });
   } 
 
+  React.useEffect(() => {
+    setCardName('');
+    setCardLink('');
+  }, [props.isOpen]);
+
   return (
     <PopupWithForm 
       title="Новое место" 
@@ -32,46 +37,43 @@ function AddPlacePopup(props) {
       textSubmit="Создать" 
       onClose={props.onClose}
       onSubmit={handleSubmit}
-      children={
-        <>
-          <label className="popup__field">
-            <input 
-              className="popup__name-input input-general-properties" 
-              id="nameInputCard" 
-              onChange={handleChangeCardName}
-              name="card-name" 
-              value={cardName} 
-              placeholder="Название" 
-              type="text"
-              minLength="2" 
-              maxLength="30" 
-              required 
-            />
+    >
+      <label className="popup__field">
+        <input 
+          className="popup__name-input input-general-properties" 
+          id="nameInputCard" 
+          onChange={handleChangeCardName}
+          name="card-name" 
+          value={cardName} 
+          placeholder="Название" 
+          type="text"
+          minLength="2" 
+          maxLength="30" 
+          required 
+        />
 
-            <span className="popup__input-error nameInputCard-error">
-              Ошибка валидации названия
-            </span>
-          </label>
+        <span className="popup__input-error nameInputCard-error">
+          Ошибка валидации названия
+        </span>
+      </label>
 
-          <label className="popup__field">
-            <input 
-              className="popup__job-input input-general-properties" 
-              id="linkInput"
-              onChange={handleChangeCardLink} 
-              name="image-link" 
-              value={cardLink}
-              placeholder="Ссылка на картинку" 
-              type="url"
-              required 
-            />
+      <label className="popup__field">
+        <input 
+          className="popup__job-input input-general-properties" 
+          id="linkInput"
+          onChange={handleChangeCardLink} 
+          name="image-link" 
+          value={cardLink}
+          placeholder="Ссылка на картинку" 
+          type="url"
+          required 
+        />
 
-            <span className="popup__input-error linkInput-error">
-              Ошибка валидации ссылки на картинку
-            </span>
-          </label>
-        </>
-      }
-    />
+        <span className="popup__input-error linkInput-error">
+          Ошибка валидации ссылки на картинку
+        </span>
+      </label>
+    </PopupWithForm>
   )
 }
 

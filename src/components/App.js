@@ -61,6 +61,9 @@ function App() {
               setUserData({_id: res.data._id, email: res.data.email});
             }
           })
+          .catch((err) => {
+            console.log(err);
+          });
         }
       }
     }
@@ -151,76 +154,74 @@ function App() {
   
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="App">
-        <div className="page">
-            <Header 
-              loggedIn={loggedIn} 
-              userData={userData} 
+      <div className="page">
+        <Header 
+          loggedIn={loggedIn} 
+          userData={userData} 
+        />
+        <Switch>
+          <ProtectedRoute
+            exact
+            path="/"
+            component={Main}
+            loggedIn={loggedIn}
+
+            onEditProfile={handleEditProfileClick} 
+            onAddPlace={handleAddPlaceClick} 
+            onEditAvatar={handleEditAvatarClick} 
+            onCardClick={handleCardClick} 
+            onCardLike={handleCardLike} 
+            onCardDelete={handelCardDelete}
+            cards={cards}
+          >
+          </ProtectedRoute>
+          <Route path='/sign-up'>
+            
+            <Register
+              onFinal={setInfoTooltipState}
             />
-            <Switch>
-              <ProtectedRoute
-                exact
-                path="/"
-                component={Main}
-                loggedIn={loggedIn}
-
-                onEditProfile={handleEditProfileClick} 
-                onAddPlace={handleAddPlaceClick} 
-                onEditAvatar={handleEditAvatarClick} 
-                onCardClick={handleCardClick} 
-                onCardLike={handleCardLike} 
-                onCardDelete={handelCardDelete}
-                cards={cards}
-              >
-              </ProtectedRoute>
-              <Route path='/sign-up'>
-                
-                <Register
-                  onFinal={setInfoTooltipState}
-                />
-              </Route>
-              <Route path='/sign-in'>
-                <Login 
-                  handleLogin={handleLogin}
-                  onFinal={setInfoTooltipState}
-                />
-              </Route>
-
-              <Route>
-                {loggedIn ? <Redirect to="/" /> : <Redirect to="sign-up" />}
-              </Route>
-            </Switch>
-
-            <InfoTooltip
-              message={infoTooltipState.message} 
-              isError={infoTooltipState.isError}
-              onClose={closeAllPopups}
+          </Route>
+          <Route path='/sign-in'>
+            <Login 
+              handleLogin={handleLogin}
+              onFinal={setInfoTooltipState}
             />
+          </Route>
 
-            <ImagePopup 
-              card={selectedCard} 
-              onClose={closeAllPopups} 
-            />
+          <Route>
+            {loggedIn ? <Redirect to="/" /> : <Redirect to="sign-up" />}
+          </Route>
+        </Switch>
 
-            <EditProfilePopup 
-              isOpen={isEditProfilePopupOpen} 
-              onClose={closeAllPopups} 
-              onUpdateUser={handleUpdateUser}
-            ></EditProfilePopup>
+        <InfoTooltip
+          message={infoTooltipState.message} 
+          isError={infoTooltipState.isError}
+          onClose={closeAllPopups}
+        />
 
-            <AddPlacePopup
-              onAddPlace={handleAddPlaceSubmit}
-              isOpen={isAddPlacePopupOpen} 
-              onClose={closeAllPopups} 
-              cards={cards}
-            ></AddPlacePopup>
+        <ImagePopup 
+          card={selectedCard} 
+          onClose={closeAllPopups} 
+        />
 
-            <EditAvatarPopup
-              onUpdateAvatar={handleUpdateAvatar}
-              isOpen={isEditAvatarPopupOpen} 
-              onClose={closeAllPopups} 
-            />
-          </div>
+        <EditProfilePopup 
+          isOpen={isEditProfilePopupOpen} 
+          onClose={closeAllPopups} 
+          onUpdateUser={handleUpdateUser}
+        ></EditProfilePopup>
+
+        <AddPlacePopup
+          onAddPlace={handleAddPlaceSubmit}
+          isOpen={isAddPlacePopupOpen} 
+          onClose={closeAllPopups} 
+          cards={cards}
+        ></AddPlacePopup>
+
+        <EditAvatarPopup
+          onUpdateAvatar={handleUpdateAvatar}
+          isOpen={isEditAvatarPopupOpen} 
+          onClose={closeAllPopups} 
+        />
       </div>
     </CurrentUserContext.Provider>
   );
