@@ -38,42 +38,40 @@ class Register extends React.Component {
 
   render() {
     return (
-      <>
-        <main className="auth">
-          <form
-            className="auth__form"
-            onSubmit={this.handleSubmit}
+      <main className="auth">
+        <form
+          className="auth__form"
+          onSubmit={this.handleSubmit}
+        >
+          <h2 className="auth__header">Регистрация</h2>
+
+          <input
+            name="email"
+            className="auth__input-email general-input-auth"
+            placeholder="Email"
+            type="text"
+            value={this.state.email}
+            onChange={this.handleChange}
           >
-            <h2 className="auth__header">Регистрация</h2>
 
-            <input
-              name="email"
-              className="auth__input-email general-input-auth"
-              placeholder="Email"
-              type="text"
-              value={this.state.email}
-              onChange={this.handleChange}
-            >
+          </input>
 
-            </input>
+          <input
+            name="password"
+            className="auth__input-password general-input-auth"
+            placeholder="Пароль"
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          >
 
-            <input
-              name="password"
-              className="auth__input-password general-input-auth"
-              placeholder="Пароль"
-              type="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            >
+          </input>
 
-            </input>
+          <button className="auth__button-submit">Зарегистрироваться</button>
 
-            <button className="auth__button-submit">Зарегистрироваться</button>
-
-            <Link to="/sign-in" className="auth__link">Уже зарегистрированы? Войти</Link>
-          </form>
-        </main>
-      </>
+          <Link to="/sign-in" className="auth__link">Уже зарегистрированы? Войти</Link>
+        </form>
+      </main>
     )
   }
 }
