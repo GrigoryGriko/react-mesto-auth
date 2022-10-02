@@ -29,6 +29,7 @@ class Register extends React.Component {
     .then((res) => {
       if (res.data) {
         this.props.onFinal({ message: 'Вы успешно зарегистрировались!', isError: false });
+        this.props.history.push('/signin');
       }
       else {
         this.props.onFinal({ message: 'Что-то пошло не так! Попробуйте ещё раз.', isError: true })
