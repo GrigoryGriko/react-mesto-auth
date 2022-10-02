@@ -6,7 +6,8 @@ function Header(props) {
   
   function signOut(e) {
     e.preventDefault();
-    props.usetLoggedIn();
+    props.unsetLoggedIn();
+    props.resetUserData();
     localStorage.removeItem('jwt');
     history.push('/sign-in');
   }

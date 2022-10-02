@@ -1,5 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
-
+const BASE_URL = 'https://auth.nomoreparties.co';
 
 function _getResponseData(res) {
   if (!res.ok) {
@@ -30,8 +29,6 @@ export const authorize = (password, email) => {
   }).then(res => _getResponseData(res));
 };
 
-
-/*
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
@@ -40,19 +37,6 @@ export const getContent = (token) => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     }
-  }).then(res => _getResponseData(res));
-}*/
-
-/*  
-const getContent = (token) => {
-  return fetch(`${auth.BASE_URL}/users/me`, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-    }
   })
   .then(res => res.json())
-  .then(data => data)
-}*/
+}

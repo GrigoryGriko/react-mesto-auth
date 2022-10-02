@@ -15,7 +15,7 @@ import ImagePopup from './ImagePopup.js';
 import InfoTooltip from './InfoTooltip.js';
 import api from '../utils/Api.js';
 import ProtectedRoute from './ProtectedRoute.js';
-import * as auth from '../auth.js';
+import * as auth from '../utils/auth.js';
 
 
 function App() {
@@ -47,18 +47,6 @@ function App() {
     });
   }, [])
 
-  const getContent = (token) => {
-    return fetch(`${auth.BASE_URL}/users/me`, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      }
-    })
-    .then(res => res.json())
-  }
-
   React.useEffect(() => {
     tokenCheck();
 
@@ -67,7 +55,7 @@ function App() {
         const jwt = localStorage.getItem('jwt');
   
         if (jwt) {
-          getContent(jwt).then((res) => {
+          auth.getContent(jwt).then((res) => {
             if (res) {
               setLoggedIn(true);
               setUserData({_id: res.data._id, email: res.data.email});
@@ -164,9 +152,13 @@ function App() {
     setSelectedCard({});
   }
   
-  function usetLoggedIn() {
+  function unsetLoggedIn() {
     setLoggedIn(false)
   }
+  function resetUserData() {
+    setUserData({_id: '', email: ''});
+  }
+  
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -174,7 +166,8 @@ function App() {
         <Header 
           loggedIn={loggedIn} 
           userData={userData} 
-          usetLoggedIn={usetLoggedIn}
+          unsetLoggedIn={unsetLoggedIn}
+          resetUserData={resetUserData}
         />
         <Switch>
           <ProtectedRoute
