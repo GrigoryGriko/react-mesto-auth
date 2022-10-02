@@ -47,20 +47,6 @@ function App() {
     });
   }, [])
 
-  const getContent = (token) => {
-    return fetch(`${auth.BASE_URL}/users/me`, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      }
-    })
-    .then(res => res.json())
-    .then(data => data)
-  }
-  
-
   React.useEffect(() => {
     tokenCheck();
 
@@ -69,7 +55,7 @@ function App() {
         const jwt = localStorage.getItem('jwt');
   
         if (jwt) {
-          getContent(jwt).then((res) => {
+          auth.getContent(jwt).then((res) => {
             if (res) {
               setLoggedIn(true);
               setUserData({_id: res.data._id, email: res.data.email});
