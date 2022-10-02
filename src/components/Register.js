@@ -28,9 +28,8 @@ class Register extends React.Component {
     auth.register(password, email)
     .then((res) => {
       if (res.data) {
-        console.log(4);
         this.props.onFinal({ message: 'Вы успешно зарегистрировались!', isError: false });
-        this.props.history.push('/signin');
+        this.props.history.push('/sign-in');
       }
     })
     .catch(() => {
