@@ -34,9 +34,6 @@ function App() {
   const [infoTooltipState, setInfoTooltipState] = useState({ message: '', isError: false });
 
   const history = useHistory();
-
-  console.log(userData);
-  console.log(localStorage);
   
   React.useEffect(() => {
     Promise.all([api.getInitCards(), api.getInitUserData()])
