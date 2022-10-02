@@ -57,7 +57,6 @@ function App() {
       }
     })
     .then(res => res.json())
-    .then(data => data)
   }
 
   React.useEffect(() => {
