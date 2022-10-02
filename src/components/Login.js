@@ -27,10 +27,11 @@ class Login extends React.Component {
     if (!this.state.password || !this.state.email) {
       return;
     }
-    console.log(auth.authorize(this.state.password, this.state.email));
     auth.authorize(this.state.password, this.state.email)
     .then((data) => {
       if (data.token) {
+        localStorage.setItem('jwt', data.token);
+
         this.setState({email: '', password: ''}, () => {
           this.props.handleLogin();
           this.props.history.push('/');
