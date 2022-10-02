@@ -27,7 +27,7 @@ export function handleSaveForm({nameInput, jobInput}) {
 
   formListValidation['form-edit-info'].lockButton();
 }
-
+ 
 export function handleAddCardButton({nameInputCard: name, linkInput: link}) {
   cardAdd.renderLoading(true);
   formListValidation['form-add-card'].lockButton();
