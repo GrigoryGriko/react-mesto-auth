@@ -6,11 +6,12 @@ function Header(props) {
   
   function signOut(e) {
     e.preventDefault();
+    props.usetLoggedIn();
     localStorage.removeItem('jwt');
     history.push('/sign-in');
   }
+  
   return (
-    
         <header className="header section">
           <div className="header__container-content">
             <a className="logo" href="#"></a>

@@ -34,6 +34,9 @@ function App() {
   const [infoTooltipState, setInfoTooltipState] = useState({ message: '', isError: false });
 
   const history = useHistory();
+
+  console.log(userData);
+  console.log(localStorage);
   
   React.useEffect(() => {
     Promise.all([api.getInitCards(), api.getInitUserData()])
@@ -47,6 +50,19 @@ function App() {
     });
   }, [])
 
+  const getContent = (token) => {
+    return fetch(`${auth.BASE_URL}/users/me`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+    .then(res => res.json())
+    .then(data => data)
+  }
+
   React.useEffect(() => {
     tokenCheck();
 
@@ -55,7 +71,7 @@ function App() {
         const jwt = localStorage.getItem('jwt');
   
         if (jwt) {
-          auth.getContent(jwt).then((res) => {
+          getContent(jwt).then((res) => {
             if (res) {
               setLoggedIn(true);
               setUserData({_id: res.data._id, email: res.data.email});
@@ -152,12 +168,17 @@ function App() {
     setSelectedCard({});
   }
   
+  function usetLoggedIn() {
+    setLoggedIn(false)
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header 
           loggedIn={loggedIn} 
           userData={userData} 
+          usetLoggedIn={usetLoggedIn}
         />
         <Switch>
           <ProtectedRoute
