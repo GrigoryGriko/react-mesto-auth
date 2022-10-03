@@ -37,6 +37,5 @@ export const getContent = (token) => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     }
-  })
-  .then(res => res.json())
+  }).then(res => _getResponseData(res));
 }
