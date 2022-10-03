@@ -13,6 +13,12 @@ function EditAvatarPopup(props) {
     });
   } 
 
+  React.useEffect(() => {
+    if (props.isOpen) {
+      refImageUrl.current.value = '';
+    }
+  }, [props.isOpen]);
+
   return (
     <PopupWithForm 
       title="Обновить аватар" 
